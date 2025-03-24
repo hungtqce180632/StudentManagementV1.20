@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudentManagementV1._2"
+        xmlns:viewmodels="clr-namespace:StudentManagementV1._2.ViewModels"
         mc:Ignorable="d"
         Title="Student Management System" Height="700" Width="1200"
         WindowStartupLocation="CenterScreen">
@@ -163,6 +164,8 @@
                     <TextBlock Grid.Column="0" Text="Dashboard" Margin="20,0,0,0" FontSize="18" FontWeight="SemiBold" VerticalAlignment="Center"/>
                     
                     <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0,0,20,0">
+                        <Button Content="Refresh Data" Width="100" Height="30" Margin="5,0" Background="#2C3E50" Foreground="White" BorderThickness="0"
+                                Command="{Binding LoadDataCommand}"/>
                         <Button Content="Help" Width="80" Height="30" Margin="5,0" Background="#2C3E50" Foreground="White" BorderThickness="0"/>
                     </StackPanel>
                 </Grid>
@@ -177,7 +180,7 @@
 
                 <TextBlock Grid.Row="0" Text="Welcome to Student Management System" FontSize="22" FontWeight="Bold" Margin="0,0,0,20"/>
 
-                <!-- Dashboard Content - Will be replaced with actual content -->
+                <!-- Dashboard Content -->
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -197,7 +200,7 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0" Text="Total Students" FontSize="14" Foreground="#777777"/>
-                            <TextBlock Grid.Row="1" Text="0" FontSize="24" FontWeight="Bold" Margin="0,5,0,0"/>
+                            <TextBlock Grid.Row="1" Text="{Binding TotalStudents}" FontSize="24" FontWeight="Bold" Margin="0,5,0,0"/>
                         </Grid>
                     </Border>
 
@@ -208,7 +211,7 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0" Text="Total Teachers" FontSize="14" Foreground="#777777"/>
-                            <TextBlock Grid.Row="1" Text="0" FontSize="24" FontWeight="Bold" Margin="0,5,0,0"/>
+                            <TextBlock Grid.Row="1" Text="{Binding TotalTeachers}" FontSize="24" FontWeight="Bold" Margin="0,5,0,0"/>
                         </Grid>
                     </Border>
 
@@ -219,15 +222,21 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0" Text="Active Courses" FontSize="14" Foreground="#777777"/>
-                            <TextBlock Grid.Row="1" Text="0" FontSize="24" FontWeight="Bold" Margin="0,5,0,0"/>
+                            <TextBlock Grid.Row="1" Text="{Binding TotalCourses}" FontSize="24" FontWeight="Bold" Margin="0,5,0,0"/>
                         </Grid>
                     </Border>
 
                     <!-- Placeholder for future content -->
                     <Border Grid.Row="1" Grid.ColumnSpan="3" Margin="0,20,0,0" Background="White" CornerRadius="5" BorderBrush="#EEEEEE" BorderThickness="1">
                         <Grid Margin="15">
-                            <TextBlock Text="Student Management System Dashboard" FontSize="16" FontWeight="SemiBold"/>
-                            <TextBlock Text="This dashboard will display analytics and important information." 
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            
+                            <TextBlock Grid.Row="0" Text="Student Management System Dashboard" FontSize="16" FontWeight="SemiBold"/>
+                            
+                            <TextBlock Grid.Row="1" Text="Connected to SQL Server Database: StudentManagementDB" 
                                        Margin="0,30,0,0" 
                                        HorizontalAlignment="Center" 
                                        VerticalAlignment="Center" 
@@ -245,7 +254,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     
-                    <TextBlock Grid.Column="0" Text="Ready" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="12"/>
+                    <TextBlock Grid.Column="0" Text="Connected to SQL Server" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="12"/>
                     <TextBlock Grid.Column="1" Text="Version 1.2" Margin="0,0,10,0" VerticalAlignment="Center" FontSize="12"/>
                 </Grid>
             </Border>

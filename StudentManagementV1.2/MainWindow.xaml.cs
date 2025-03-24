@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using StudentManagementV1._2.ViewModels;
 
 namespace StudentManagementV1._2;
 
@@ -16,8 +17,12 @@ namespace StudentManagementV1._2;
 /// </summary>
 public partial class MainWindow : Window
 {
+    private MainViewModel _viewModel;
+
     public MainWindow()
     {
         InitializeComponent();
+        _viewModel = new MainViewModel();
+        DataContext = _viewModel;
     }
 }
